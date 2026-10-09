@@ -1,9 +1,6 @@
 spring:
-  application:
-    name: bankapplication
-
   datasource:
-    url: ${DB_URL:jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:bank_db}?useSSL=false&serverTimezone=Asia/Kolkata&allowPublicKeyRetrieval=true}
+    url: ${DB_URL:jdbc:mysql://YOUR_UAT_HOST:3306/bank_db?useSSL=false&serverTimezone=Asia/Kolkata&allowPublicKeyRetrieval=true}
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:root}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -11,7 +8,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: false
+    show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
@@ -19,3 +16,8 @@ spring:
 
 server:
   port: ${PORT:8080}
+
+logging:
+  level:
+    com.bank: DEBUG
+    org.hibernate.SQL: DEBUG
